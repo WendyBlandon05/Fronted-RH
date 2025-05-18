@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+.header {
+    background-color: #002366;
+    padding: 10px 0;
+    text-align: center;
+    height: 65px;
+}
+h1{
+    color: white;
+    font-family: 'Times New Roman';
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #002366;
+}
+
+.footer p {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}

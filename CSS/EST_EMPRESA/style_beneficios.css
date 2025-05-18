@@ -1,0 +1,158 @@
+
+.headerpage{
+  background-color: #002366;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Contenedor general */
+.container {
+  max-width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+/* Encabezados de sección */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .header span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .header button {
+    padding: 8px 15px;
+    background-color: #002366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .header button:hover {
+    background-color: #0055cc;
+}
+
+/* Tabla */
+.divTable {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  table th {
+    background-color: #002366;
+    color: white;
+  }
+  
+  .acao {
+    width: 80px;
+  }
+  
+  /* Modal */
+  .modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+  
+
+  
+
+  
+  
+  
+  .modal button:hover {
+    background-color: #0055cc;
+  }
+ 
+
+
+  .modal-container {
+    display: none;  /* Oculto por defecto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-container.active {
+    display: flex;  /* Muestra el modal cuando tiene la clase 'active' */
+}
+
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px; /* Puedes ajustar el tamaño máximo del modal */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form label {
+    margin: 10px 0 5px;
+}
+
+.modal form input {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.modal form button {
+    padding: 10px;
+    background-color: #bd860d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal form button:hover {
+    background-color: #a70f0f;
+}
+
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #002366;
+}

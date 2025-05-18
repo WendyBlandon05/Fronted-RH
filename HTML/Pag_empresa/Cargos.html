@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
+</head>
+<body>
+    <header class="headerpage">
+        <h1>Cargos</h1>
+    </header>
+    <main>
+    <section id="Cargos">
+        <div class="container">
+            <div class="header">
+                <span>Cargos</span>
+                <button id="new2" onclick="openModal()">Registrar</button>
+            </div>
+        <div class="divTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Salario base</th>
+                        
+                        <th class="acao">Editar</th>
+                        <th class="acao">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-container" id="modaldepto">
+            <div class="modal">
+                <form id="formdepto">
+                    <label for="codigo">Código</label>
+                    <input id="codigo" type="text" required>
+
+                    <label for="name-cargo">Nombre</label>
+                    <input id="name-cargo" type="text" required>
+
+                    <label for="descripcion">Descrpción</label>
+                    <input id="descripcion" type="text" required>
+
+                    <label for="salario">Salario</label>
+                        <input id="salario" type="number" required>
+
+                    <button id="btnGuardarcontrato">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+</main>
+<footer class="main-footer">
+    <p>Copyright © 2023-2025 Sistema de recursos humanos</p>
+</footer>
+<script src="../../SCRIPT/script_cargos.js"></script>
+</body>
+</html>
