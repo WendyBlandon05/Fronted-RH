@@ -6,7 +6,7 @@
 
 body {
     background-color: white;
-    font-family: Arial, sans-serif;
+    font-family:'Times New Roman', Times, serif ,Arial;
 }
 
 .header {
@@ -40,8 +40,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 120px);
-    padding: 20px;
+    height: calc(66vh - 120px);
+    padding: 15px;
 }
 
 .cards {
@@ -50,7 +50,18 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
 }
+.logo__empresa--imagen{
+  max-width: 80vw;
+  height: auto;
+  display:block;
 
+}
+.logo__empresa{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0; 
+}
 .card {
     background-color: #002366;
     width: 215px;
