@@ -78,6 +78,12 @@ padding: 0.5rem;
   color: white;
   text-align: center;
   padding: 1rem;
+  width: 100%;
+}
+
+.login__footer--pie {
+  margin: 0;
+  font-size: 0.9rem;
 }
 .login__logo {
   text-align: center;
