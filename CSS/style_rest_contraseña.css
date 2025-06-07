@@ -9,14 +9,14 @@ body.forgot-password {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Times New Roman', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
   color: #333;
 }
 
 .forgot-password__header {
   background-color: #002366;
-  padding: 2rem 1rem;
+  padding:1rem;
   text-align: center;
   color: white;
   width: 100%;

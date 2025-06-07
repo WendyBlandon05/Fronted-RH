@@ -3,6 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: "Times New Roman";
 }
 
 .login__header {
@@ -77,4 +78,16 @@ padding: 0.5rem;
   color: white;
   text-align: center;
   padding: 1rem;
+}
+.login__logo {
+  text-align: center;
+  padding:0;
+}
+
+.login__logo img {
+  max-width: 140px;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
