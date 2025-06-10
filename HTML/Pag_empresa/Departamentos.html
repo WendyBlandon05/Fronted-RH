@@ -9,10 +9,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
     <link rel="stylesheet" href="/CSS/style_empresa.css">
+  <link rel="stylesheet" href="/CSS/style_login.css">
 </head>
+
 <body>
     <!--Menu lateral inicio-->
-     <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
 
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
@@ -22,9 +24,9 @@
             <li><a href="./Cargos.html"><i class="bx bx-briefcase"></i>Cargos</a></li>
             <li><a href="./Beneficios.html"><i class="bx bx-wallet"></i>Beneficios</a></li>
             <li><a href="#"><i class="bx bx-time"></i>Jornadas</a></li>
-        
+
         </ul>
-           <div class="sidebar__actions">
+        <div class="sidebar__actions">
             <a href="/HTML/login.html" class="sidebar__button">
                 <i class="sidebar__icon bx bx-log-out"></i>
                 <span class="sidebar__label">Cerrar sesión</span>
@@ -39,52 +41,56 @@
     <header class="headerpage">
         <h1>Departamentos</h1>
     </header>
-    <main>
-    <section id="Departamentos">
-        <div class="container">
-            <div class="header">
-                <span>Departamentos</span>
-                <button id="new2" onclick="openModal()">Registrar</button>
+    <main class="main-content">
+        <section id="Departamentos">
+            <div class="container">
+                <div class="header">
+                    <span>Departamentos</span>
+                    <button id="new2" onclick="openModal()">Registrar</button>
+                </div>
+                <div class="divTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th class="acao">Editar</th>
+                                <th class="acao">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-container" id="modaldepto">
+                    <div class="modal">
+                        <form id="formdepto">
+                            <label for="codigo">Código</label>
+                            <input id="codigo" type="text" required>
+
+                            <label for="depto">Nombre</label>
+                            <input id="depto" type="text" required>
+
+                            <label for="descripcion">Descrpción</label>
+                            <input id="descripcion" type="text" required>
+
+                            <button id="btnGuardarcontrato">Guardar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        <div class="divTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th class="acao">Editar</th>
-                        <th class="acao">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
+        </section>
+    </main>
 
-        <div class="modal-container" id="modaldepto">
-            <div class="modal">
-                <form id="formdepto">
-                    <label for="codigo">Código</label>
-                    <input id="codigo" type="text" required>
 
-                    <label for="depto">Nombre</label>
-                    <input id="depto" type="text" required>
+    <footer class="login__footer">
+        <p class="login__footer--pie">Copyright © 2023-2025 Sistema de recursos humanos</p>
+    </footer>
 
-                    <label for="descripcion">Descrpción</label>
-                    <input id="descripcion" type="text" required>
-
-                    <button id="btnGuardarcontrato">Guardar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </section>
-</main>
-<footer class="main-footer">
-    <p>Copyright © 2023-2025 Sistema de recursos humanos</p>
-</footer>
-<script src="../../SCRIPT/script_deptos.js"></script>
+    <script src="../../SCRIPT/script_deptos.js"></script>
 </body>
+
 </html>

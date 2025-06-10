@@ -6,6 +6,10 @@
 
 body {
     background-color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
 /* Encabezado */
@@ -20,16 +24,6 @@ body {
 }
 h1{
     font-family: 'Times New Roman'; 
-}
-
-/* Pie de página */
-.main-footer {
-    background-color: #f2f2f2;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 /* Menú lateral */
@@ -93,7 +87,7 @@ h1{
 
 /* Contenido principal */
 .main-content {
-    margin-left: 60px;
+    margin-left: 0px;
     padding: 20px;
 }
 
@@ -101,4 +95,9 @@ h1{
     position: absolute;
     bottom: 20px;
     width: 100%;
+}
+
+
+.main-content {
+  flex-grow: 1;
 }
