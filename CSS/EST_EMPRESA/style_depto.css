@@ -82,17 +82,10 @@
       z-index: 5;
     }
     
-  
-    
-  
-    
-    
-    
     .modal button:hover {
       background-color: #0055cc;
     }
    
-  
   
     .modal-container {
       display: none;  /* Oculto por defecto */
@@ -158,4 +151,7 @@
     width: 100%;
     background: #002366;
 }
-  
+h1{
+  font-size: 32px;
+  font-weight: bold;
+}
