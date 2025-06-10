@@ -67,6 +67,7 @@ h1{
 
 .menu {
     list-style: none;
+    padding-left: 0px;
 }
 
 .menu li a, 

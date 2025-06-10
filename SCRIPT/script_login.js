@@ -1,3 +1,21 @@
+//MANEJO DE LA ALERTA
+function showAlert(message, type = "success", duration = 3000) {
+  const alertBox = document.getElementById("custom-alert");
+  const alertMessage = document.getElementById("alert-message");
+
+  // Limpiar clases anteriores
+  alertBox.className = "alert-hidden";
+  alertBox.classList.add(`alert-${type}`, "alert-show");
+
+  alertMessage.textContent = message;
+
+  // Ocultar después del tiempo
+  setTimeout(() => {
+    alertBox.classList.remove("alert-show");
+  }, duration);
+}
+
+//MANEJO DE LA API
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('login-form');
 
@@ -24,9 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('refresh_token', data.refresh);
 
         // Redirigir al usuario a la siguiente vista del sistema
-        window.location.href = '/HTML/index.html'; // cambia esta ruta según tu proyecto
+        window.location.href = '/HTML/index.html'; 
+       alert("Bienvenido al Sistema de Administraciòn de RH");
       } else {
-        alert('Usuario o contraseña incorrectos.');
+        alert("Bienvenido al Sistema de Administraciòn de RH");
       }
 
     } catch (error) {

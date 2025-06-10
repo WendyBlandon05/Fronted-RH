@@ -97,3 +97,43 @@ padding: 0.5rem;
   border-radius: 0;
   box-shadow: none;
 }
+
+/*PERSONALIZAR ALERTA*/
+#custom-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-left: 6px solid;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1000;
+  color: white;
+  font-weight: 500;
+}
+
+#custom-alert.alert-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tipos */
+.alert-success {
+  background-color: #28a745;
+  border-color: #1e7e34;
+}
+
+.alert-error {
+  background-color: #dc3545;
+  border-color: #b21f2d;
+}
+
+.alert-warning {
+  background-color: #ffc107;
+  border-color: #d39e00;
+  color: #212529;
+}
+
