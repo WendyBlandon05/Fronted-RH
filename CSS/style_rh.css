@@ -21,13 +21,14 @@ body {
 
 /* Pie de página */
 .footer {
-  background-color: #f2f2f2;
+  background-color: #002366;
   text-align: center;
   padding: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
   font-size: 14px;
+  color: white;
 }
 
 /* Menú lateral */
@@ -203,4 +204,8 @@ table th {
 
 .modal button:hover {
   background-color: #0055cc;
+}
+ul.menu
+{
+  padding-left: 0%;
 }
