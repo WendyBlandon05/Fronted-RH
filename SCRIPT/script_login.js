@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Redirigir al usuario a la siguiente vista del sistema
         window.location.href = '/HTML/index.html'; 
-       alert("Bienvenido al Sistema de Administraciòn de RH");
+       alert("Bienvenido al Sistema de Administración de RH");
       } else {
-        alert("Bienvenido al Sistema de Administraciòn de RH");
+        alert("Usuario o contraseña incorrecta");
       }
 
     } catch (error) {

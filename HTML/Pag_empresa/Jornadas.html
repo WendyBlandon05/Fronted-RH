@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornadas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
+    <link rel="stylesheet" href="/CSS/style_empresa.css">
+</head>
+
+<body>
+    <!--Menu lateral inicio-->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <nav class="sidebar">
+        <ul class="menu">
+            <li><a href="./Departamentos.html"><i class="bx bx-building"></i>Departamentos</a></li>
+            <li><a href="./Cargos.html"><i class="bx bx-briefcase"></i>Cargos</a></li>
+            <li><a href="./Beneficios.html"><i class="bx bx-wallet"></i>Beneficios</a></li>
+            <li><a href="./Jornadas.html"><i class="bx bx-time"></i>Jornadas</a></li>
+
+        </ul>
+        <div class="sidebar__actions">
+            <a href="/HTML/login.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-log-out"></i>
+                <span class="sidebar__label">Cerrar sesión</span>
+            </a>
+            <a href="/HTML/empresa.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-arrow-back"></i>
+                <span class="sidebar__label">Atrás</span>
+            </a>
+        </div>
+    </nav>
+    <!--Menu lateral fin-->
+    <header class="headerpage">
+        <h1>Jornadas</h1>
+    </header>
+    <main class="main-content">`
+
+        <main class="main-content">
+            <!--Barra de busqueda-->
+            <div class="search-bar">
+                <i class='bx bx-search-alt-2'></i>
+                <input type="text" class="search-bar__input" placeholder="Buscar...">
+                <button class="search-bar__button">Buscar</button>
+            </div>
+            <!--Fin barra de busqueda-->
+            <section id="jornadas">
+                <div class="container">
+                    <div class="header">
+                        <span>Jornadas</span>
+                        <button id="new2" onclick="openModal()">Registrar</button>
+                    </div>
+                    <div class="divTable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Número horas</th>
+                                    <th class="acao">Editar</th>
+                                    <th class="acao">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-container" id="modaldepto">
+                        <div class="modal">
+                            <form id="formdepto">
+                                <label for="jorna">Nombre</label>
+                                <input id="jorna" type="text" required>
+
+                                <label for="horas">Número horas</label>
+                                <input id="horas" type="number" required>
+
+                                <button id="btnGuardarcontrato">Guardar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <footer class="login__footer">
+            <p class="login__footer--pie">Copyright © 2023-2025 Sistema de recursos humanos</p>
+        </footer>
+
+        <script src="../../SCRIPT/script_deptos.js"></script>
+</body>
+
+</html>

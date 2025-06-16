@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beneficios</title>
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_beneficios.css">
@@ -17,12 +16,13 @@
     <!--Menu lateral inicio-->
     <input type="checkbox" id="menu-toggle" class="menu-toggle">
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    
     <nav class="sidebar">
         <ul class="menu">
             <li><a href="./Departamentos.html"><i class="bx bx-building"></i>Departamentos</a></li>
             <li><a href="./Cargos.html"><i class="bx bx-briefcase"></i>Cargos</a></li>
             <li><a href="./Beneficios.html"><i class="bx bx-wallet"></i>Beneficios</a></li>
-            <li><a href="#"><i class="bx bx-time"></i>Jornadas</a></li>
+            <li><a href="./Jornadas.html"><i class="bx bx-time"></i>Jornadas</a></li>
         </ul>
         <div class="sidebar__actions">
             <a href="/HTML/login.html" class="sidebar__button">
@@ -41,20 +41,30 @@
         <h1>Beneficios</h1>
     </header>
     <main>
-        <section id="Beneficios">
+        <!--Barra de busqueda-->
+        <div class="search-bar">
+            <i class='bx bx-search-alt-2'></i>
+            <select class="search-bar__select">
+                <option value="nombre">Beneficios</option>
+                <option value="tipo">Tipo de beneficios</option>
+            </select>
+            <input type="text" class="search-bar__input" placeholder="Buscar...">
+            <button class="search-bar__button">Buscar</button>
+        </div>
+        <!--Fin barra de busqueda-->
+
+        <!--TIPO DE BENEFICIOS INICIO-->
+        <section id="tipoBeneficios">
             <div class="container">
                 <div class="header">
-                    <span>Beneficios</span>
-                    <button id="new2" onclick="openModal()">Registrar</button>
+                    <span>Tipo de beneficios</span>
+                    <button id="btn_TB" onclick="openModal()">Registrar</button>
                 </div>
                 <div class="divTable">
                     <table>
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Tipo</th>
-                                <th>Descripción</th>
-                                <th>Monto</th>
                                 <th class="acao">Editar</th>
                                 <th class="acao">Eliminar</th>
                             </tr>
@@ -80,12 +90,58 @@
                             <label for="monto">Monto</label>
                             <input id="monto" type="number" required>
 
-                            <button id="btnGuardarcontrato">Guardar</button>
+                            <button id="btnGuardarBeneficio">Guardar</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </section>
+            <!--BENEFICIOS INICIO-->
+            <section id="Beneficios">
+                <div class="container">
+                    <div class="header">
+                        <span>Beneficios</span>
+                        <button id="new2" onclick="openModal()">Registrar</button>
+                    </div>
+                    <div class="divTable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                    <th class="acao">Editar</th>
+                                    <th class="acao">Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal-container" id="modalbeneficio">
+                        <div class="modal">
+                            <form id="formbeneficio">
+                                <label for="name">Nombre</label>
+                                <input id="name" type="text" required>
+
+                                <label for="name-cargo">Tipo</label>
+                                <input id="name-cargo" type="text" required>
+
+                                <label for="descripcion">Descripción</label>
+                                <input id="descripcion" type="text" required>
+
+                                <label for="monto">Monto</label>
+                                <input id="monto" type="number" required>
+
+                                <button id="btnGuardarBeneficio">Guardar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--Beneficios FIN-->
+            </section>
     </main>
 
     <footer class="main-footer">

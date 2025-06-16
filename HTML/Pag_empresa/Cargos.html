@@ -4,16 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Cargos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
+    <link rel="stylesheet" href="/CSS/style_empresa.css">
 </head>
 <body>
     <header class="headerpage">
         <h1>Cargos</h1>
     </header>
-    <main>
+
+       <!--Menu lateral inicio-->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <nav class="sidebar">
+        <ul class="menu">
+            <li><a href="./Departamentos.html"><i class="bx bx-building"></i>Departamentos</a></li>
+            <li><a href="./Cargos.html"><i class="bx bx-briefcase"></i>Cargos</a></li>
+            <li><a href="./Beneficios.html"><i class="bx bx-wallet"></i>Beneficios</a></li>
+            <li><a href="./Jornadas.html"><i class="bx bx-time"></i>Jornadas</a></li>
+        </ul>
+        <div class="sidebar__actions">
+            <a href="/HTML/login.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-log-out"></i>
+                <span class="sidebar__label">Cerrar sesión</span>
+            </a>
+            <a href="/HTML/empresa.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-arrow-back"></i>
+                <span class="sidebar__label">Atrás</span>
+            </a>
+        </div>
+        </nav>
+<!--fin menu de lateral-->
+    <main class="main-content">
+  <!--Barra de busqueda-->
+        <div class="search-bar">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" class="search-bar__input" placeholder="Buscar...">
+            <button class="search-bar__button">Buscar</button>
+        </div>
+        <!--Fin barra de busqueda-->
+
     <section id="Cargos">
         <div class="container">
             <div class="header">
@@ -24,7 +56,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Código</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Salario base</th>
@@ -42,28 +73,25 @@
         <div class="modal-container" id="modaldepto">
             <div class="modal">
                 <form id="formdepto">
-                    <label for="codigo">Código</label>
-                    <input id="codigo" type="text" required>
-
                     <label for="name-cargo">Nombre</label>
                     <input id="name-cargo" type="text" required>
 
-                    <label for="descripcion">Descrpción</label>
+                    <label for="descripcion">Descripción</label>
                     <input id="descripcion" type="text" required>
 
-                    <label for="salario">Salario</label>
+                    <label for="salario">Salario base</label>
                         <input id="salario" type="number" required>
 
-                    <button id="btnGuardarcontrato">Guardar</button>
+                    <button id="btnGuardarCargos">Guardar</button>
                 </form>
             </div>
         </div>
     </div>
     </section>
 </main>
-<footer class="main-footer">
-    <p>Copyright © 2023-2025 Sistema de recursos humanos</p>
-</footer>
+    <footer class="login__footer">
+        <p class="login__footer--pie">Copyright © 2023-2025 Sistema de recursos humanos</p>
+    </footer>
 <script src="../../SCRIPT/script_cargos.js"></script>
 </body>
 </html>

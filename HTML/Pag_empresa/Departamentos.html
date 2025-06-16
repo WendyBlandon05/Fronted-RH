@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamento</title>
+    <title>Departamentos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
     <link rel="stylesheet" href="/CSS/style_empresa.css">
-  <link rel="stylesheet" href="/CSS/style_login.css">
+    <link rel="stylesheet" href="/CSS/style_login.css">
 </head>
 
 <body>
@@ -42,6 +42,14 @@
         <h1>Departamentos</h1>
     </header>
     <main class="main-content">
+        <!--Barra de busqueda-->
+        <div class="search-bar">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" class="search-bar__input" placeholder="Buscar...">
+            <button class="search-bar__button">Buscar</button>
+        </div>
+        <!--Fin barra de busqueda-->
+
         <section id="Departamentos">
             <div class="container">
                 <div class="header">
@@ -52,7 +60,6 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Código</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th class="acao">Editar</th>
@@ -68,16 +75,13 @@
                 <div class="modal-container" id="modaldepto">
                     <div class="modal">
                         <form id="formdepto">
-                            <label for="codigo">Código</label>
-                            <input id="codigo" type="text" required>
-
                             <label for="depto">Nombre</label>
                             <input id="depto" type="text" required>
 
-                            <label for="descripcion">Descrpción</label>
+                            <label for="descripcion">Descripción</label>
                             <input id="descripcion" type="text" required>
 
-                            <button id="btnGuardarcontrato">Guardar</button>
+                            <button id="btnGuardarDepartamento">Guardar</button>
                         </form>
                     </div>
                 </div>
