@@ -12,12 +12,6 @@ function limpiarFormulario() {
   document.getElementById('formEmpleado').reset();
 }
 
-//document.addEventListener('DOMContentLoaded', () => {
-//  const btnGuardar = document.getElementById('btnGuardarEmpleado');
-  //if (btnGuardar) {
-    //btnGuardar.addEventListener('click', guardarEmpleado);
-  //}
-//});
 
 async function guardarEmpleado() {
   const cedula = document.getElementById('cedula');
