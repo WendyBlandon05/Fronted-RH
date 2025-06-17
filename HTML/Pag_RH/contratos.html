@@ -1,79 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contratos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../CSS/EST_RH/style_contratos.css">
+
     <link rel="stylesheet" href="/CSS/ESTANDAR.CSS">
 </head>
 
 <body>
-    <header class="headerpage">
-        <h1>Gestión de contratos</h1>
+    <!-- Menu lateral -->
+    <input type="checkbox" id="menu-toggle" class="sidebar__toggle">
+    <label for="menu-toggle" class="sidebar__icon-toggle">&#9776;</label>
+
+    <nav class="sidebar">
+        <ul class="sidebar__menu">
+            <li class="sidebar__item"><a href="./empleados.html" class="sidebar__link"><i
+                        class="bx bx-group"></i>Empleados</a></li>
+            <li class="sidebar__item"><a href="./contratos.html" class="sidebar__link"><i
+                        class="bx bx-file"></i>Contratos</a></li>
+            <li class="sidebar__item"><a href="#" class="sidebar__link"><i class="bx bx-wallet"></i>Permisos</a></li>
+
+        </ul>
+        <div class="sidebar__actions">
+            <a href="/HTML/login.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-log-out"></i>
+                <span class="sidebar__label">Cerrar sesión</span>
+            </a>
+            <a href="/HTML/recursos_humanos.html" class="sidebar__button">
+                <i class="sidebar__icon bx bx-arrow-back"></i>
+                <span class="sidebar__label">Atrás</span>
+            </a>
+        </div>
+    </nav>
+    <!-- Fin menu lateral -->
+    <!--header-->
+    <header class="header">
+        <h1 class="header__title">Contratos</h1>
     </header>
-    <main>
-    <section id="CONTRATOS">
-        <div class="container">
-            <div class="header">
-                <span>Contratos</span>
-                <button id="new2" onclick="openModal()">Registrar</button>
-            </div>
-        <div class="divTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Fecha de inicio</th>
-                        <th>Fecha final</th>
-                        <th>Departamento</th>
-                        <th>Tipo</th>
-                        <th>Cédula empleado</th>
-                        <th>Tipo de jornada</th>
-                       
-                        <th class="acao">Editar</th>
-                        <th class="acao">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
+
+    <main class="main">
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <i class='bx bx-search-alt-2 search__icon'></i>
+            <input type="text" class="search-bar__input" placeholder="Buscar...">
+            <button class="search-bar__button">Buscar</button>
         </div>
+        <!-- Fin barra de búsqueda -->
+    
+        <section id="tipoContratos" class="department">
+            <div class="department__container">
+                <div class="department__header">
+                    <span class="department__title">Tipo de contratos</span>
+                    <button class="department__register-button" onclick="openModal()">Registrar</button>
+                </div>
+                <div class="department__table-wrapper">
+                    <table class="department__table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th class="department__action">Editar</th>
+                                <th class="department__action">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-        <div class="modal-container" id="modalcontrato">
-            <div class="modal">
-                <form id="formcontrato">
-                    <label for="codigo">Código</label>
-                    <input id="codigo" type="text" required>
+                        </tbody>
+                    </table>
+                </div>
+                <!--MODAL tipo contratos-->
+                <div class="modal" id="modalTipoContrato">
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
+                            <h2 class="modal__title">Tipo Contrato</h2>
+                        </div>
+                        <form class="modal__form" id="formbeneficio">
+                            <label class="modal__label" for="name">Nombre</label>
+                            <input class="modal__input" id="name" type="text" required>
 
-                    <label for="fechainicio">Fecha de inicio</label>
-                    <input id="fechainicio" type="date" required>
-
-                    <label for="fechafinal">Fecha final</label>
-                    <input id="fechafinal" type="date" required>
-
-                    <label for="depto">Departamento</label>
-                    <input id="depto" type="text" required>
-
-                    <label for="tipo">Tipo</label>
-                    <input id="tipo" type="text" required>
-
-                    <label for="cedula">Cédula empleado</label>
-                    <input id="cedula" type="text" required>
-
-                    <label for="jornada">Tipo de jornada</label>
-                    <input id="jornada" type="text" required>
-
-                    <button id="btnGuardarcontrato">Guardar</button>
-                </form>
+                            <button class="modal__button" id="btnGuardarBeneficio">Guardar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </section>
-</main>
+        </section>
+
+         <!--fin TIPO DE CONTRATOS -->
+        <section class="department" id="CONTRATOS">
+            <div class="department__container">
+                <div class="department__header">
+                    <span class="department__title">Contratos</span>
+                    <button class="department__register-button" id="new2" onclick="openModal()">Registrar</button>
+                </div>
+                <div class="department__table-wrapper">
+                    <table class="department__table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Fecha de inicio</th>
+                                <th>Fecha final</th>
+                                <th>Tipo</th>
+                                <th>Cédula empleado</th>
+                                <th>Jornada</th>
+                                <th>Cargo</th>
+                                <th>Departamento</th>
+
+                                <th class="department__action">Editar</th>
+                                <th class="department__action">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--modal-->
+                <div class="modal" id="modalcontrato">
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
+                            <h2 class="modal__title">Nuevo contrato</h2>
+                        </div>
+                        <!--formulario CONTRATOS-->
+                        <form class="modal__form" id="formcontrato">
+                            <label class="modal__label" for="codigo">Código:</label>
+                            <input class="modal__input" id="codigo" type="text"  maxlength="8"required>
+
+                            <label class="modal__label" for="fechainicio">Fecha de inicio:</label>
+                            <input class="modal__input" id="fechainicio" type="date" required>
+
+                            <label class="modal__label" for="fechafinal">Fecha final:</label>
+                            <input class="modal__input" id="fechafinal" type="date" required>
+
+                            <label class="modal__label" for="tipo">Tipo:</label>
+                            <input class="modal__input" id="tipo" type="text" required>
+
+                            <label class="modal__label" for="cedula">Cédula empleado:</label>
+                            <input class="modal__input" id="cedula" type="text" pattern="\d{13}[A-Z]" required>
+
+                            <label class="modal__label" for="jornada">Jornada:</label>
+                            <input class="modal__input" id="jornada" type="text" required>
+
+                            <label class="modal__label" for="cargo">Cargo:</label>
+                            <input class="modal__input" id="cargo" type="text" required>
+
+                            <label class="modal__label" for="departamento">Departamento:</label>
+                            <input class="modal__input" id="departamento" type="text" required>
+
+                            <button class="modal__button" id="btnGuardarcontrato">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+        <!--footer-->
+
+    <footer class="footer">
+        <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
+    </footer>
     <script src="../../SCRIPT/script_contratos.js"></script>
 </body>
+
 </html>

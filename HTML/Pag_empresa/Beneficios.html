@@ -18,10 +18,14 @@
 
     <nav class="sidebar">
         <ul class="sidebar__menu">
-            <li class="sidebar__item"><a href="./Departamentos.html" class="sidebar__link"><i class="bx bx-building"></i>Departamentos</a></li>
-            <li class="sidebar__item"><a href="./Cargos.html" class="sidebar__link"><i class="bx bx-briefcase"></i>Cargos</a></li>
-            <li class="sidebar__item"><a href="./Beneficios.html" class="sidebar__link"><i class="bx bx-wallet"></i>Beneficios</a></li>
-            <li class="sidebar__item"><a href="./Jornadas.html" class="sidebar__link"><i class="bx bx-time"></i>Jornadas</a></li>
+            <li class="sidebar__item"><a href="./Departamentos.html" class="sidebar__link"><i
+                        class="bx bx-building"></i>Departamentos</a></li>
+            <li class="sidebar__item"><a href="./Cargos.html" class="sidebar__link"><i
+                        class="bx bx-briefcase"></i>Cargos</a></li>
+            <li class="sidebar__item"><a href="./Beneficios.html" class="sidebar__link"><i
+                        class="bx bx-wallet"></i>Beneficios</a></li>
+            <li class="sidebar__item"><a href="./Jornadas.html" class="sidebar__link"><i
+                        class="bx bx-time"></i>Jornadas</a></li>
         </ul>
         <div class="sidebar__actions">
             <a href="/HTML/login.html" class="sidebar__button">
@@ -41,12 +45,12 @@
     </header>
 
     <main class="main">
-     <!-- Barra de búsqueda -->
-    <div class="search-bar">
-        <i class='bx bx-search-alt-2 search__icon'></i>
-        <input type="text" class="search-bar__input" placeholder="Buscar...">
-        <button class="search-bar__button">Buscar</button>
-    </div>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <i class='bx bx-search-alt-2 search__icon'></i>
+            <input type="text" class="search-bar__input" placeholder="Buscar...">
+            <button class="search-bar__button">Buscar</button>
+        </div>
 
 
         <!--TIPO DE BENEFICIOS INICIO-->
@@ -70,12 +74,57 @@
                         </tbody>
                     </table>
                 </div>
-        <!--MODAL tipo beneficios-->
+                <!--MODAL tipo beneficios-->
                 <div class="modal" id="modalbeneficio">
                     <div class="modal__content">
+                        <div class="modal__header">
+                            <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
+                            <h2 class="modal__title">Tipo de beneficio</h2>
+                        </div>
                         <form class="modal__form" id="formbeneficio">
                             <label class="modal__label" for="name">Nombre</label>
-                            <input  class="modal__input" id="name" type="text" required>
+                            <input class="modal__input" id="name" type="text" required>
+
+                            <button class="modal__button" id="btnGuardarBeneficio">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--BENEFICIOS INICIO-->
+        <section id="Beneficios" class="department">
+            <div class="department__container">
+                <div class="department__header">
+                    <span class="department__title">Beneficios</span>
+                    <button id="new2" class="department__register-button" onclick="openModal()">Registrar</button>
+                </div>
+                <div class="department__table-wrapper">
+                    <table class="department__table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                                <th>Monto</th>
+                                <th class="department__action">Editar</th>
+                                <th class="department__action">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--modal beneficios-->
+                <div class="modal" id="modalbeneficio">
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
+                            <h2 class="modal__title">Beneficio</h2>
+                        </div>
+                        <form class="modal__form" id="formbeneficio">
+                            <label class="modal__label" for="name">Nombre</label>
+                            <input class="modal__input" id="name" type="text" required>
 
                             <label class="modal__label" for="name-cargo">Tipo</label>
                             <input class="modal__input" id="name-cargo" type="text" required>
@@ -91,60 +140,15 @@
                     </div>
                 </div>
             </div>
-            <!--BENEFICIOS INICIO-->
-            <section id="Beneficios" class="department">
-                <div class="department__container">
-                    <div class="department__header">
-                        <span class="department__title">Beneficios</span>
-                        <button id="new2" class="department__register-button" onclick="openModal()">Registrar</button>
-                    </div>
-                    <div class="department__table-wrapper">
-                        <table class="department__table">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Tipo</th>
-                                    <th>Descripción</th>
-                                    <th>Monto</th>
-                                    <th class="department__action">Editar</th>
-                                    <th class="department__action">Eliminar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--modal beneficios-->
-                    <div class="modal" id="modalbeneficio">
-                        <div class="modal__content">
-                            <form class="modal__form" id="formbeneficio">
-                                <label class="modal__label" for="name">Nombre</label>
-                                <input class="modal__input" id="name" type="text" required>
-
-                                <label class="modal__label" for="name-cargo">Tipo</label>
-                                <input class="modal__input" id="name-cargo" type="text" required>
-
-                                <label class="modal__label" for="descripcion">Descripción</label>
-                                <input class="modal__input" id="descripcion" type="text" required>
-
-                                <label class="modal__label" for="monto">Monto</label>
-                                <input class="modal__input" id="monto" type="number" required>
-
-                                <button class="modal__button" id="btnGuardarBeneficio">Guardar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!--Beneficios FIN-->
-            </section>
+            <!--Beneficios FIN-->
+        </section>
     </main>
 
     <footer class="footer">
         <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
     </footer>
     <script src="../../SCRIPT/script_beneficios.js"></script>
-    
+
 </body>
 
 </html>
