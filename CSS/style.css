@@ -6,7 +6,7 @@
 
 body {
     background-color: white;
-    font-family:'Times New Roman', Times, serif ,Arial;
+    font-family: 'Times New Roman', Times, serif, Arial;
 }
 
 .header {
@@ -21,7 +21,7 @@ body {
     font-family: 'Times New Roman';
 }
 
-footer {
+.footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -29,7 +29,7 @@ footer {
     background: #002366;
 }
 
-.footer p {
+.footer__text {
     color: white;
     text-align: center;
     padding: 10px;
@@ -50,19 +50,21 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
 }
-.logo__empresa--imagen{
-  max-width: 80vw;
-  height: auto;
-  display:block;
 
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
 }
-.logo__empresa{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0; 
+
+.logo__imagen {
+    max-width: 80vw;
+    height: auto;
+    display: block;
 }
-.card {
+
+.cards__card {
     background-color: #002366;
     width: 215px;
     height: 215px;
@@ -77,27 +79,28 @@ footer {
     cursor: pointer;
 }
 
-.card:hover {
+.cards__card:hover {
     background-color: #001a4d;
     transform: scale(1.1);
 }
 
-.cards a {
+.cards__card a {
     text-decoration: none;
     color: inherit;
 }
 
-.card img {
+.cards__card img {
     width: 60px;
     height: auto;
     margin-bottom: 10px;
 }
 
-.card p {
+.cards__card-text {
     font-size: 16px;
     font-weight: bold;
 }
 
+/* Media queries */
 
 @media (max-width: 600px) {
     .main-menu {
@@ -110,16 +113,15 @@ footer {
         align-items: center;
     }
 
-    .card {
+    .cards__card {
         width: 90%;
         max-width: 300px;
         height: 200px;
     }
 }
 
-
 @media (max-width: 900px) and (min-width: 601px) {
-    .card {
+    .cards__card {
         width: 45%;
         height: 200px;
     }
