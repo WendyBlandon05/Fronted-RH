@@ -7,23 +7,24 @@
     <title>Cargos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../CSS/EST_EMPRESA/style_depto.css">
-    <link rel="stylesheet" href="/CSS/style_empresa.css">
+    <link rel="stylesheet" href="/CSS/ESTANDAR.CSS">
 </head>
-<body>
-    <header class="headerpage">
-        <h1>Cargos</h1>
-    </header>
 
-       <!--Menu lateral inicio-->
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+<body>
+    <!-- Menu lateral -->
+    <input type="checkbox" id="menu-toggle" class="sidebar__toggle">
+    <label for="menu-toggle" class="sidebar__icon-toggle">&#9776;</label>
+
     <nav class="sidebar">
-        <ul class="menu">
-            <li><a href="./Departamentos.html"><i class="bx bx-building"></i>Departamentos</a></li>
-            <li><a href="./Cargos.html"><i class="bx bx-briefcase"></i>Cargos</a></li>
-            <li><a href="./Beneficios.html"><i class="bx bx-wallet"></i>Beneficios</a></li>
-            <li><a href="./Jornadas.html"><i class="bx bx-time"></i>Jornadas</a></li>
+        <ul class="sidebar__menu">
+            <li class="sidebar__item"><a href="./Departamentos.html" class="sidebar__link"><i
+                        class="bx bx-building"></i>Departamentos</a></li>
+            <li class="sidebar__item"><a href="./Cargos.html" class="sidebar__link"><i
+                        class="bx bx-briefcase"></i>Cargos</a></li>
+            <li class="sidebar__item"><a href="./Beneficios.html" class="sidebar__link"><i
+                        class="bx bx-wallet"></i>Beneficios</a></li>
+            <li class="sidebar__item"><a href="./Jornadas.html" class="sidebar__link"><i
+                        class="bx bx-time"></i>Jornadas</a></li>
         </ul>
         <div class="sidebar__actions">
             <a href="/HTML/login.html" class="sidebar__button">
@@ -35,63 +36,72 @@
                 <span class="sidebar__label">Atrás</span>
             </a>
         </div>
-        </nav>
-<!--fin menu de lateral-->
-    <main class="main-content">
-  <!--Barra de busqueda-->
+    </nav>
+    <!-- Fin menu lateral -->
+
+    <header class="header">
+        <h1 class="header__title">Cargos</h1>
+    </header>
+
+    <main class="main">
+
+        <!-- Barra de búsqueda -->
         <div class="search-bar">
-            <i class='bx bx-search-alt-2'></i>
+            <i class='bx bx-search-alt-2 search__icon'></i>
             <input type="text" class="search-bar__input" placeholder="Buscar...">
             <button class="search-bar__button">Buscar</button>
         </div>
-        <!--Fin barra de busqueda-->
+        <!--FIN barra de busqueda-->
+        <!--Tabla cargos-->
+        <section class="department" id="cargos">
+            <div class="department__container">
+                <div class="department__header">
+                    <span class="department__title">Cargos</span>
+                    <button class="department__register-button" id="btn_registrar-cargo"
+                        onclick="openModal()">Registrar</button>
+                </div>
+                <div class="department__table-wrapper">
+                    <table class="department__table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Salario base</th>
 
-    <section id="Cargos">
-        <div class="container">
-            <div class="header">
-                <span>Cargos</span>
-                <button id="new2" onclick="openModal()">Registrar</button>
+                                <th class="department__action">Editar</th>
+                                <th class="department__action">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--MODAL-->
+                <div class="modal" id="modalCargo">
+                    <div class="modal__content">
+                        <form class="modal__form" id="formcargo">
+                            <label class="modal__label" for="name-cargo">Nombre</label>
+                            <input class="modal__input" id="name-cargo" type="text" required>
+
+                            <label class="modal__label" for="descripcion">Descripción</label>
+                            <input class="modal__input" id="descripcion" type="text" required>
+
+                            <label class="modal__label" for="salario">Salario base</label>
+                            <input class="modal__input" id="salario" type="number" required>
+
+                            <button class="modal__button" id="btnGuardarCargos">Guardar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        <div class="divTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Salario base</th>
-                        
-                        <th class="acao">Editar</th>
-                        <th class="acao">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
+        </section>
+    </main>
 
-        <div class="modal-container" id="modaldepto">
-            <div class="modal">
-                <form id="formdepto">
-                    <label for="name-cargo">Nombre</label>
-                    <input id="name-cargo" type="text" required>
-
-                    <label for="descripcion">Descripción</label>
-                    <input id="descripcion" type="text" required>
-
-                    <label for="salario">Salario base</label>
-                        <input id="salario" type="number" required>
-
-                    <button id="btnGuardarCargos">Guardar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </section>
-</main>
-    <footer class="login__footer">
-        <p class="login__footer--pie">Copyright © 2023-2025 Sistema de recursos humanos</p>
+    <footer class="footer">
+        <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
     </footer>
-<script src="../../SCRIPT/script_cargos.js"></script>
+    <script src="../../SCRIPT/script_cargos.js"></script>
 </body>
+
 </html>

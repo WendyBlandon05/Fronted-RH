@@ -1,24 +1,30 @@
-const modal = document.querySelector('.modal-container');
+// Elementos principales
+const modal = document.getElementById('modaldepto');
 const tbody = document.querySelector('tbody');
 
-const campos = ['codigo', 'depto', 'descripcion'];
+// Campos a capturar
+const campos = ['depto', 'descripcion'];
 
+// Inputs por ID
 const inputs = {};
 campos.forEach(campo => {
     inputs[campo] = document.getElementById(campo);
 });
 
-const btnGuardar = document.getElementById('btnGuardarcontrato');
+// Botón guardar
+const btnGuardar = document.getElementById('btnGuardarDepartamento');
 
 let departamentos = [];
 let id;
 
+// Función para abrir modal
 function openModal(edit = false, index = 0) {
-    modal.classList.add('active');
+    modal.classList.add('isactive');
 
+    // Cierre del modal al hacer clic fuera del contenido
     modal.onclick = e => {
-        if (e.target.className.indexOf('modal-container') !== -1) {
-            modal.classList.remove('active');
+        if (e.target === modal) {
+            modal.classList.remove('isactive');
         }
     };
 
@@ -35,39 +41,43 @@ function openModal(edit = false, index = 0) {
     }
 }
 
+// Editar un departamento
 function editDepto(index) {
     openModal(true, index);
 }
 
+// Eliminar un departamento
 function deleteDepto(index) {
     departamentos.splice(index, 1);
     guardarDeptos();
     cargarDeptos();
 }
 
+// Insertar fila en tabla
 function insertarDepto(depto, index) {
-    let tr = document.createElement('tr');
+    const tr = document.createElement('tr');
     tr.innerHTML = `
-        <td>${depto.codigo}</td>
         <td>${depto.depto}</td>
         <td>${depto.descripcion}</td>
-        <td class="acao">
+        <td class="department__action">
             <button onclick="editDepto(${index})"><i class="bx bx-edit"></i></button>
         </td>
-        <td class="acao">
+        <td class="department__action">
             <button onclick="deleteDepto(${index})"><i class="bx bx-trash"></i></button>
         </td>
     `;
     tbody.appendChild(tr);
 }
 
+// Evento guardar
 btnGuardar.onclick = e => {
     e.preventDefault();
 
-    let datos = {};
+    const datos = {};
     for (let campo of campos) {
-        if (inputs[campo].value.trim() === '') return;
-        datos[campo] = inputs[campo].value;
+        const valor = inputs[campo].value.trim();
+        if (!valor) return;
+        datos[campo] = valor;
     }
 
     if (id !== undefined) {
@@ -81,13 +91,16 @@ btnGuardar.onclick = e => {
     cargarDeptos();
 };
 
+// Cargar departamentos al iniciar
 function cargarDeptos() {
     departamentos = obtenerDeptos();
     tbody.innerHTML = '';
     departamentos.forEach((depto, index) => insertarDepto(depto, index));
 }
 
+// LocalStorage helpers
 const obtenerDeptos = () => JSON.parse(localStorage.getItem('departamentosBD')) ?? [];
 const guardarDeptos = () => localStorage.setItem('departamentosBD', JSON.stringify(departamentos));
 
+// Inicializar
 cargarDeptos();
