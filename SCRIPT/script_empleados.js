@@ -2,7 +2,6 @@ function openModal() {
   const modal = document.querySelector('.modal');
   modal.classList.add('isactive');
 }
-
 function closeModal() {
   const modal = document.querySelector('.modal');
   modal.classList.remove('isactive');
