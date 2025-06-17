@@ -46,8 +46,8 @@
         <!-- Barra de búsqueda -->
         <div class="search-bar">
             <i class='bx bx-search-alt-2 search__icon'></i>
-            <input type="text" class="search-bar__input" placeholder="Buscar...">
-            <button class="search-bar__button">Buscar</button>
+            <input type="text" class="search-bar__input" placeholder="Digitar cédula" id="inputBuscarCedula">
+            <button class="search-bar__button" id="btnBuscarEmpleado">Buscar</button>
         </div>
 
         <!--SECTION DE TABLA EMPLEADOS-->
@@ -87,16 +87,17 @@
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
                             <h2 class="modal__title">Nuevo empleado</h2>
+                            <button class="modal__close" onclick="closeModal()">&times;</button>
                         </div>
                         <!--formulario-->
 
                         <form class="modal__form" id="formEmpleado">
                             <label class="modal__label" for="cedula">Cédula:</label>
-                            <input class="modal__input" id="cedula" type="text" pattern="\d{13}[A-Z]" required>
+                            <input class="modal__input" id="cedula" type="text" pattern="\d{14}[A-Z]" required>
 
                             <label class="modal__label" for="apellidos">INSS:</label>
                             <input class="modal__input" id="inss" maxlength="9" pattern="\d{9}"
-                                placeholder="Ej: 123456789"  required>
+                                placeholder="Ej: 123456789" required>
 
                             <label class="modal__label" for="nombre1">Primer nombre:</label>
                             <input class="modal__input" maxlength="50" id="nombre1" type="text" required>
@@ -121,13 +122,13 @@
                             </select>
 
                             <label class="modal__label" for="telefono">Télefono:</label>
-                            <input class="modal__input" pattern="\d{8}" maxlength="8" required type="tel"
+                            <input class="modal__input" id="telefono" pattern="\d{8}" maxlength="8" required type="tel"
                                 placeholder="Ej:81234567">
 
                             <label class="modal__label" for="correo">Correo:</label>
                             <input class="modal__input" id="correo" type="email" required>
 
-                            <button class="modal__button" id="btnGuardarEmpleado">Guardar</button>
+                            <button class="modal__button" type="button" id="btnGuardarEmpleado">Guardar</button>
                         </form>
                     </div>
                 </div>
@@ -141,6 +142,7 @@
     </footer>
     
     <script src="/SCRIPT/script_indes.js"></script>
+    <script src="/SCRIPT/script_empleados.js"></script>
 </body>
 
 </html>
