@@ -143,9 +143,11 @@
                             <select class="modal__input" id="tipo" required>
                                 <option value="">Seleccione tipo de contrato</option>
                             </select>
-
+                            
                             <label class="modal__label" for="cedula">Cédula empleado:</label>
-                            <input class="modal__input" id="cedula" type="text" pattern="\d{13}[A-Z]" required>
+                            <input class="modal__input" id="cedula" list="cedulas-lista" required>
+                            <datalist id="cedulas-lista"></datalist>
+                            <input type="hidden" id="empleado_id">
 
                             <label class="modal__label" for="jornada">Jornada:</label>
                             <select class="modal__input" id="jornada" required>

@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarJornadas(); 
     cargarCargos();
     cargarDepartamentos()
+    cargarCedulas()
 });
 
 // Función para cargar el select de tipo de contrato
@@ -281,3 +282,107 @@ function cargarDepartamentos() {
         console.error("Error al cargar departamentos:", error);
     });
 }
+//CARGAR CEDULAS
+function cargarCedulas() {
+    const datalist = document.getElementById("cedulas-lista");
+    const accessToken = localStorage.getItem("access_token");
+
+    fetch("http://127.0.0.1:8000/adminrh/empleado/", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.Success) {
+            datalist.innerHTML = ""; // Limpiar antes
+            data.Record.forEach(emp => {
+                const option = document.createElement("option");
+                option.value = emp.numero_cedula; // Solo se ve esto
+                option.dataset.id = emp.id;        // Guardamos el id como data attribute
+                datalist.appendChild(option);
+            });
+        } else {
+            alert("No se pudieron cargar las cédulas.");
+        }
+    })
+    .catch(error => console.error("Error al cargar cédulas:", error));
+}
+
+//DETECTAR AL EMPLEADO AUTOMATIC
+document.getElementById("cedula").addEventListener("input", function () {
+    const valorIngresado = this.value;
+    const opciones = document.querySelectorAll("#cedulas-lista option");
+    let encontrado = false;
+
+    opciones.forEach(op => {
+        if (op.value === valorIngresado) {
+            document.getElementById("empleado_id").value = op.dataset.id;
+            encontrado = true;
+        }
+    });
+
+    if (!encontrado) {
+        document.getElementById("empleado_id").value = "";
+    }
+});
+////INTENTO MIL DE GUARDAR CONTRATO :( /////
+document.getElementById("btnGuardarcontrato").addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    const codigo = document.getElementById("codigo").value.trim();
+    const fechaInicio = document.getElementById("fechainicio").value;
+    const fechaFin = document.getElementById("fechafinal").value;
+    const idTipo = parseInt(document.getElementById("tipo").value);
+    const idEmpleado = parseInt(document.getElementById("empleado_id").value);
+    const idJornada = parseInt(document.getElementById("jornada").value);
+    const idCargo = parseInt(document.getElementById("cargo").value);
+    const idDepartamento = parseInt(document.getElementById("departamento").value);
+
+
+    if (!idEmpleado) {
+        alert("Debe seleccionar una cédula válida de un empleado registrado.");
+        return;
+    }
+
+    const datos = {
+        codigo_contrato: codigo,
+        fecha_inicio: fechaInicio,
+        fecha_conclusion: fechaFin,
+        id_tipo_contratos: idTipo,
+        id_empleados: idEmpleado,
+        id_jornada: idJornada,
+        id_cargos: idCargo,
+        id_departamento: idDepartamento,
+        
+    };
+
+    try {
+        const token = localStorage.getItem("access_token"); // Asegurate de que este token existe
+
+        const response = await fetch("http://127.0.0.1:8000/adminrh/contratos/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(datos)
+        });
+
+        const result = await response.json();
+
+        if (result.Success) {
+            alert("Contrato guardado con éxito.");
+            closeModal('modalcontrato');
+            document.getElementById("formcontrato").reset();
+        } else {
+            alert("Error: " + result.Message);
+        }
+
+    } catch (error) {
+        console.error("Error al guardar contrato:", error);
+        alert("Error al conectar con el servidor.");
+    }
+});
