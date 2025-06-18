@@ -1,106 +1,174 @@
-// Elementos principales
-const modal = document.getElementById('modaldepto');
-const tbody = document.querySelector('tbody');
+function openModal() {
+  const modal = document.querySelector('.modal');
+  modal.classList.add('isactive');
+}
+function closeModal() {
+  const modal = document.querySelector('.modal');
+  modal.classList.remove('isactive');
+  limpiarFormulario();
+}
 
-// Campos a capturar
-const campos = ['depto', 'descripcion'];
+function limpiarFormulario() {
+  document.getElementById('formdepto').reset();
+}
+//Guardar departamento
+async function guardarDepartamento() {
+  const depto = document.getElementById('depto');
+  const descrip = document.getElementById('descripcion');
 
-// Inputs por ID
-const inputs = {};
-campos.forEach(campo => {
-    inputs[campo] = document.getElementById(campo);
+  if (!depto || !descrip ) {
+    alert("Error al leer los campos del formulario.");
+    return;
+  }
+
+  const data = {
+    nombre_departamento: depto.value.trim(),
+    descripcion: descrip.value.trim()
+  };
+
+  const accessToken = localStorage.getItem('access_token');
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/adminrh/departamentos/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    console.log(result)
+
+    if (response.ok) {
+      alert("Departamento registrado con éxito");
+      document.getElementById('formdepto').reset();
+      closeModal(); //cerrar el modal
+      cargarDepartamentos(); //recargar la tabla
+    } else {
+      alert(result.Message || "No se pudo registrar el departamento.");
+    }
+  } catch (error) {
+    console.error("Error al registrar el departamento:", error);
+    alert("Ocurrió un error al conectar con el servidor.");
+  }
+}
+
+//LLENAR LA TABLA
+document.addEventListener('DOMContentLoaded', () => {
+  cargarDepartamentos(); // al cargar la página
 });
 
-// Botón guardar
-const btnGuardar = document.getElementById('btnGuardarDepartamento');
+async function cargarDepartamentos() {
+  const accessToken = localStorage.getItem('access_token');
 
-let departamentos = [];
-let id;
+  try {
+    const response = await fetch('http://127.0.0.1:8000/adminrh/departamentos/', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
 
-// Función para abrir modal
-function openModal(edit = false, index = 0) {
-    modal.classList.add('isactive');
+    const result = await response.json();
 
-    // Cierre del modal al hacer clic fuera del contenido
-    modal.onclick = e => {
-        if (e.target === modal) {
-            modal.classList.remove('isactive');
-        }
-    };
-
-    if (edit) {
-        campos.forEach(campo => {
-            inputs[campo].value = departamentos[index][campo];
-        });
-        id = index;
+    if (response.ok && result.Success) {
+      mostrarDepartamentosEnTabla(result.Record);
     } else {
-        campos.forEach(campo => {
-            inputs[campo].value = '';
-        });
-        id = undefined;
-    }
-}
-
-// Editar un departamento
-function editDepto(index) {
-    openModal(true, index);
-}
-
-// Eliminar un departamento
-function deleteDepto(index) {
-    departamentos.splice(index, 1);
-    guardarDeptos();
-    cargarDeptos();
-}
-
-// Insertar fila en tabla
-function insertarDepto(depto, index) {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-        <td>${depto.depto}</td>
-        <td>${depto.descripcion}</td>
-        <td class="department__action">
-            <button onclick="editDepto(${index})"><i class="bx bx-edit"></i></button>
-        </td>
-        <td class="department__action">
-            <button onclick="deleteDepto(${index})"><i class="bx bx-trash"></i></button>
-        </td>
-    `;
-    tbody.appendChild(tr);
-}
-
-// Evento guardar
-btnGuardar.onclick = e => {
-    e.preventDefault();
-
-    const datos = {};
-    for (let campo of campos) {
-        const valor = inputs[campo].value.trim();
-        if (!valor) return;
-        datos[campo] = valor;
+      alert(result.Message || "No se pudieron obtener los departamentos.");
     }
 
-    if (id !== undefined) {
-        departamentos[id] = datos;
+  } catch (error) {
+    console.error("Error al cargar departamentos:", error);
+    alert("Error de conexión al cargar departamentos.");
+  }
+}
+
+function mostrarDepartamentosEnTabla(deptos) {
+  const tbody = document.querySelector('.department__table tbody');
+  tbody.innerHTML = ''; // limpia la tabla
+
+  deptos.forEach(emp => {
+    const fila = document.createElement('tr');
+
+    fila.innerHTML = `
+      <td>${emp.nombre_departamento}</td>
+      <td>${emp.descripcion}</td>
+      <td><button class="btn btn-sm btn-warning btn-editar-empleado">Editar</button></td>
+      <td><button class="btn btn-sm btn-danger btn-eliminar-empleado">Eliminar</button></td>`;
+
+    tbody.appendChild(fila);
+  });
+}
+
+///
+document.getElementById('btnGuardarDepartamento').addEventListener('click', function(e) {
+  e.preventDefault();
+  guardarDepartamento();
+});
+
+
+// Buscar departamento
+const btnBuscar = document.getElementById('btnBuscarDepto');
+if (btnBuscar) {
+  btnBuscar.addEventListener('click', buscarDepto);
+}
+
+async function buscarDepto() {
+  const inputBuscar = document.getElementById('inputBuscarDepto');
+  const nombre = inputBuscar.value.trim();
+
+  if (!nombre) {
+    alert("Por favor, ingresa un nombre de departamento.");
+    return;
+  }
+
+  const accessToken = localStorage.getItem('access_token');
+
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/adminrh/departamentos/?nombre_depto=${nombre}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.Success && result.Record.length > 0) {
+      const depto = result.Record[0];
+      mostrarDepartamentoSoloLectura(depto);
     } else {
-        departamentos.push(datos);
+      alert(result.Message || "Departamento no encontrado.");
     }
-
-    guardarDeptos();
-    modal.classList.remove('active');
-    cargarDeptos();
-};
-
-// Cargar departamentos al iniciar
-function cargarDeptos() {
-    departamentos = obtenerDeptos();
-    tbody.innerHTML = '';
-    departamentos.forEach((depto, index) => insertarDepto(depto, index));
+  } catch (error) {
+    console.error("Error en la búsqueda:", error);
+    alert("Ocurrió un error al buscar el departamento.");
+  }
 }
 
-// LocalStorage helpers
-const obtenerDeptos = () => JSON.parse(localStorage.getItem('departamentosBD')) ?? [];
-const guardarDeptos = () => localStorage.setItem('departamentosBD', JSON.stringify(departamentos));
+function mostrarDepartamentoSoloLectura(depto) {
+  document.getElementById('depto').value = depto.nombre_departamento;
+  document.getElementById('descripcion').value = depto.descripcion;
 
-// Inicializar
-cargarDeptos();
+  // Deshabilitar todos los inputs del formulario
+  document.querySelectorAll('#formdepto input, #formdepto select, #btnGuardarDepartamento')
+    .forEach(elem => {
+      elem.disabled = true;
+    });
+
+  openModal();
+}
+
+// Al cerrar el modal, volver a activar los campos
+function closeModal() {
+  const modal = document.querySelector('.modal');
+  modal.classList.remove('isactive');
+  limpiarFormulario();
+  document.querySelectorAll('#formdepto input, #formdepto select, #btnGuardarDepartamento')
+    .forEach(elem => {
+      elem.disabled = false;
+    });
+}

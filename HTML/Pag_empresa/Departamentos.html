@@ -43,8 +43,8 @@
         <!-- Barra de búsqueda -->
         <div class="search-bar">
             <i class='bx bx-search-alt-2 search__icon'></i>
-            <input type="text" class="search-bar__input" placeholder="Buscar...">
-            <button class="search-bar__button">Buscar</button>
+            <input type="text" class="search-bar__input" placeholder="Buscar..." id="inputBuscarDepto">
+            <button class="search-bar__button" id="btnBuscarDepto">Buscar</button>
         </div>
 
         <!-- Tabla de departamentos -->
@@ -76,7 +76,8 @@
                     <div class="modal__content">
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
-                            <h2 class="modal__title">Nuevo empleado</h2>
+                            <h2 class="modal__title">Nuevo departamento</h2>
+                            <button class="modal__close" onclick="closeModal()">&times;</button>
                         </div>
                         
                         <form class="modal__form" id="formdepto">
@@ -99,6 +100,7 @@
     </footer>
 
     <script src="/SCRIPT/script_indes.js"></script>
+    <script src="/SCRIPT/script_deptos.js"></script>
 </body>
 
 </html>
