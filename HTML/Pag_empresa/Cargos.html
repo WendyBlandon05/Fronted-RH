@@ -57,8 +57,7 @@
             <div class="department__container">
                 <div class="department__header">
                     <span class="department__title">Cargos</span>
-                    <button class="department__register-button" id="btn_registrar-cargo"
-                        onclick="openModal()">Registrar</button>
+                    <button class="department__register-button" id="btn_registrar-cargo" onclick="openModal()">Registrar</button>
                 </div>
                 <div class="department__table-wrapper">
                     <table class="department__table">
@@ -83,6 +82,7 @@
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
                             <h2 class="modal__title">Cargo</h2>
+                            <button class="modal__close" onclick="closeModal()">&times;</button>
                         </div>
 
                         <form class="modal__form" id="formcargo">
@@ -107,6 +107,7 @@
         <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
     </footer>
     <script src="/SCRIPT/script_indes.js"></script>
+    <script src="/SCRIPT/script_cargos.js"></script>
 </body>
 
 </html>

@@ -54,7 +54,7 @@
             <div class="department__container">
                 <div class="department__header">
                     <span class="department__title">Jornadas</span>
-                    <button class="department__register-button" id="new2" onclick="openModal()">Registrar</button>
+                    <button class="department__register-button" id="btnBucarJornadas" onclick="openModal()">Registrar</button>
                 </div>
                 <div class="department__table-wrapper">
                     <table class="department__table">
@@ -62,6 +62,7 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Número horas</th>
+                                <th>Descripcion</th>
                                 <th class="department__action">Editar</th>
                                 <th class="department__action">Eliminar</th>
                             </tr>
@@ -77,15 +78,19 @@
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
                             <h2 class="modal__title">Jornadas</h2>
+                            <button class="modal__close" onclick="closeModal()">&times;</button>
                         </div>
-                        <form class="modal__form id="formJornada">
+                        <form class="modal__form" id="formJornada">
                             <label class="modal__label" for="jorna">Nombre</label>
                             <input class="modal__input" id="jorna" type="text" required>
 
                             <label class="modal__label" for="horas">Número horas</label>
                             <input class="modal__input" id="horas" type="number" required>
 
-                            <button class="modal__button" id="btnGuardarcontrato">Guardar</button>
+                            <label class="modal__label" for="descripcion">Descripcion</label>
+                            <input class="modal__input" id="descripcion" type="text" required>
+
+                            <button class="modal__button" id="btnGuardarJornadas">Guardar</button>
                         </form>
                     </div>
                 </div>
@@ -98,6 +103,7 @@
     </footer>
 
     <script src="/SCRIPT/script_indes.js"></script>
+    <script src="/SCRIPT/script_jornadas.js"></script>
 </body>
 
 </html>
