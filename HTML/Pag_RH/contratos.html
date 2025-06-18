@@ -47,22 +47,22 @@
         <div class="search-bar">
             <i class='bx bx-search-alt-2 search__icon'></i>
             <input type="text" class="search-bar__input" placeholder="Buscar...">
-            <button class="search-bar__button">Buscar</button>
+            <button class="search-bar__button" id="btn_buscarContrato">Buscar</button>
         </div>
         <!-- Fin barra de búsqueda -->
-    
+
         <section id="tipoContratos" class="department">
             <div class="department__container">
                 <div class="department__header">
                     <span class="department__title">Tipo de contratos</span>
-                    <button class="department__register-button" onclick="openModal()">Registrar</button>
+                    <button class="department__register-button"
+                        onclick="openModal('modalTipoContrato')">Registrar</button>
                 </div>
                 <div class="department__table-wrapper">
                     <table class="department__table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th class="department__action">Editar</th>
                                 <th class="department__action">Eliminar</th>
                             </tr>
                         </thead>
@@ -76,25 +76,27 @@
                     <div class="modal__content">
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
+                            <button class="modal__close" onclick="closeModal('modalTipoContrato')">&times;</button>
                             <h2 class="modal__title">Tipo Contrato</h2>
                         </div>
-                        <form class="modal__form" id="formbeneficio">
+                        <form class="modal__form" id="formtipoContrato">
                             <label class="modal__label" for="name">Nombre</label>
                             <input class="modal__input" id="name" type="text" required>
 
-                            <button class="modal__button" id="btnGuardarBeneficio">Guardar</button>
+                            <button class="modal__button" id="btnGuardarTipoContrato">Guardar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
-         <!--fin TIPO DE CONTRATOS -->
+        <!--fin TIPO DE CONTRATOS -->
         <section class="department" id="CONTRATOS">
             <div class="department__container">
                 <div class="department__header">
                     <span class="department__title">Contratos</span>
-                    <button class="department__register-button" id="new2" onclick="openModal()">Registrar</button>
+                    <button class="department__register-button" onclick="openModal('modalcontrato')">Registrar</button>
+
                 </div>
                 <div class="department__table-wrapper">
                     <table class="department__table">
@@ -124,11 +126,12 @@
                         <div class="modal__header">
                             <img src="/imagenes/logorecortado.png" alt="Logo de adminRH" class="modal__logo">
                             <h2 class="modal__title">Nuevo contrato</h2>
+                            <button class="modal__close" onclick="closeModal('modalcontrato')">&times;</button>
                         </div>
                         <!--formulario CONTRATOS-->
                         <form class="modal__form" id="formcontrato">
                             <label class="modal__label" for="codigo">Código:</label>
-                            <input class="modal__input" id="codigo" type="text"  maxlength="8"required>
+                            <input class="modal__input" id="codigo" type="text" maxlength="8" required>
 
                             <label class="modal__label" for="fechainicio">Fecha de inicio:</label>
                             <input class="modal__input" id="fechainicio" type="date" required>
@@ -137,19 +140,27 @@
                             <input class="modal__input" id="fechafinal" type="date" required>
 
                             <label class="modal__label" for="tipo">Tipo:</label>
-                            <input class="modal__input" id="tipo" type="text" required>
+                            <select class="modal__input" id="tipo" required>
+                                <option value="">Seleccione tipo de contrato</option>
+                            </select>
 
                             <label class="modal__label" for="cedula">Cédula empleado:</label>
                             <input class="modal__input" id="cedula" type="text" pattern="\d{13}[A-Z]" required>
 
                             <label class="modal__label" for="jornada">Jornada:</label>
-                            <input class="modal__input" id="jornada" type="text" required>
+                            <select class="modal__input" id="jornada" required>
+                                <option value="">Seleccione tipo de jornada</option>
+                            </select>
 
                             <label class="modal__label" for="cargo">Cargo:</label>
-                            <input class="modal__input" id="cargo" type="text" required>
+                            <select class="modal__input" id="cargo" required>
+                                <option value="">Seleccione cargo</option>
+                            </select>
 
                             <label class="modal__label" for="departamento">Departamento:</label>
-                            <input class="modal__input" id="departamento" type="text" required>
+                            <select class="modal__input" id="departamento" required>
+                                <option value="">Seleccione un departamento</option>
+                            </select>
 
                             <button class="modal__button" id="btnGuardarcontrato">Guardar</button>
                         </form>
@@ -159,12 +170,13 @@
         </section>
 
     </main>
-        <!--footer-->
+    <!--footer-->
 
     <footer class="footer">
         <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
     </footer>
     <script src="/SCRIPT/script_indes.js"></script>
+    <script src="/SCRIPT/script_contratos.js"></script>
 </body>
 
 </html>
