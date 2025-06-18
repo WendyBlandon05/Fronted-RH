@@ -95,18 +95,18 @@ function mostrarDepartamentosEnTabla(deptos) {
     fila.innerHTML = `
       <td>${emp.nombre_departamento}</td>
       <td>${emp.descripcion}</td>
-      <td><button class="btn btn-sm btn-warning btn-editar-empleado">Editar</button></td>
-      <td><button class="btn btn-sm btn-danger btn-eliminar-empleado">Eliminar</button></td>`;
+      <td><button class="btn btn-sm btn-warning btn-editar-departamento">Editar</button></td>
+      <td><button class="btn btn-sm btn-danger btn-eliminar-departamento">Eliminar</button></td>`;
 
     tbody.appendChild(fila);
   });
 }
 
 ///
-document.getElementById('btnGuardarDepartamento').addEventListener('click', function(e) {
-  e.preventDefault();
-  guardarDepartamento();
-});
+//document.getElementById('btnGuardarDepartamento').addEventListener('click', function(e) {
+  //e.preventDefault();
+  //guardarDepartamento();
+//});
 
 
 // Buscar departamento
@@ -172,3 +172,104 @@ function closeModal() {
       elem.disabled = false;
     });
 }
+////////////////////////////////////
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('btn-editar-departamento')) {
+    const fila = event.target.closest('tr');
+    const celdas = fila.querySelectorAll('td');
+
+    // rellenar el formulario con los datos del departamento
+    document.getElementById('depto').value = celdas[0].textContent.trim();
+    document.getElementById('descripcion').value = celdas[1].textContent.trim();
+
+    // Desactivar el campo nombre y activar modo edición
+    document.getElementById('depto').disabled = true;
+    document.getElementById('btnGuardarDepartamento').dataset.editando = "true";
+
+    openModal();
+  }
+});
+////////////////////////////edit
+document.getElementById('btnGuardarDepartamento').addEventListener('click', async function (event) {
+  event.preventDefault(); // prevenir recarga
+
+  const editando = this.dataset.editando === "true";
+
+  const nombreDepto = document.getElementById('depto').value.trim();
+  const descripcion = document.getElementById('descripcion').value.trim();
+
+  const data = {
+    nombre_depto: nombreDepto,
+    descripcion: descripcion
+  };
+
+  const accessToken = localStorage.getItem('access_token');
+
+  if (editando) {
+    // Modo edición
+    try {
+      const response = await fetch('http://127.0.0.1:8000/adminrh/departamentos/actualizar-departamento/', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.Success) {
+        alert("Departamento actualizado con éxito.");
+        closeModal();
+        cargarDepartamentos(); 
+      } else {
+        alert(result.Message || "No se pudo actualizar el departamento.");
+      }
+    } catch (error) {
+      console.error("Error en la actualización:", error);
+      alert("Ocurrió un error al actualizar el departamento.");
+    }
+  } else {
+    guardarDepartamento();
+  }
+
+  this.dataset.editando = "false";
+});
+///Eliminar
+function EliminarDepartamento(nombre) {
+  const seguro = confirm("¿Está seguro de eliminar este departamento?");
+  if (!seguro) return;
+
+  const accessToken = localStorage.getItem('access_token');
+
+  fetch('http://127.0.0.1:8000/adminrh/departamentos/eliminar-nombre/', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    },
+    body: JSON.stringify({ nombre_departamento: nombre })
+  })
+  .then(response => response.json())
+  .then(result => {
+    if (result.Success) {
+      alert("Departamento eliminado correctamente.");
+      cargarDepartamentos(); // recarga la tabla
+    } else {
+      alert(result.Message || "No se pudo eliminar el departamento.");
+    }
+  })
+  .catch(error => {
+    console.error("Error al eliminar departamento:", error);
+    alert("Error al conectar con el servidor.");
+  });
+}
+//lisener
+document.addEventListener('click', function(event) {
+  if (event.target.classList.contains('btn-eliminar-departamento')) {
+    const fila = event.target.closest('tr');
+    const nombre = fila.querySelector('td').textContent.trim();
+    EliminarDepartamento(nombre);
+  }
+});
