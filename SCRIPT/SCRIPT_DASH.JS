@@ -88,17 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Cargar cantidad de empleados desde API
+  //llamar funciones al iniciar lapagina
   mostrarGraficoGenero(generoChart);
   mostrarCantidadEmpleados();
   mostrarCantidadContratos();
   mostrarCantidadDepartamentos();
   mostrarGraficoJornada(jornadaChart);
   mostrarGraficoDepartamento(departamentoChart);
+  mostrarNominaMes();
 
 
 
-  // Puedes hacer lo mismo para contratos, vacaciones, etc.
 });
 
 async function mostrarCantidadEmpleados() {
@@ -275,3 +275,30 @@ function generarColorAleatorio() {
   const b = Math.floor(Math.random() * 200) + 30;
   return `rgb(${r}, ${g}, ${b})`;
 }
+//mostrar proyeccion del mes
+async function mostrarNominaMes() {
+  const accessToken = localStorage.getItem('access_token');
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/adminrh/contratos/proyeccion-nomina-actual/', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.Success && result.Record) {
+      const totalNomina = result.Record.total_proyectado || 0;
+      document.getElementById('nominaMes').textContent = `$${totalNomina.toFixed(2)}`;
+    } else {
+      document.getElementById('nominaMes').textContent = '--';
+    }
+
+  } catch (error) {
+    console.error("Error al obtener la nómina del mes:", error);
+    document.getElementById('nominaMes').textContent = 'Error';
+  }
+}
+
