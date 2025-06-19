@@ -69,3 +69,50 @@ body {
   color: #1367e5;
   opacity: 1;
 }
+/*FOOTER*/
+.footer {
+  background-color: #002366;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.footer__text {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.main{
+flex-grow: 1;
+position: relative;
+overflow: hidden;
+}
+
+.header {
+    background-color: #eeeeee;
+    color: hsl(219, 100%, 20%);
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    flex-wrap: wrap; 
+    text-align: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+.header__title {
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0;
+    
+}
+
+.header__logo {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,16 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
-<body class="dashboard">
-  <div class="dashboard__container container py-4">
-    <div class="dashboard__title text-center">Panel de Control - Sistema AdminRH</div>
 
-    <!-- Paneles resumen -->
+<body class="dashboard">
+  <header class="header">
+    <h1 class="header__title">Panel de Control -AdminRH</h1>
+    <img class="header__logo" src="/imagenes/images-Photoroom.png" lt="logo empresa">
+  </header>
+  <div class="dashboard__container container py-4">
+   
+
+    <!-- Paneles-->
     <div class="dashboard__summary row g-4 mb-4">
       <div class="dashboard__card col-md-3">
         <div class="card dashboard__card-item shadow-sm">
@@ -43,7 +49,7 @@
           <i class='bx bxs-file-blank dashboard__card-icon'></i>
         </div>
       </div>
-       <div class="dashboard__card col-md-3">
+      <div class="dashboard__card col-md-3">
         <div class="card dashboard__card-item shadow-sm">
           <div class="card-body">
             <h5 class="card-title dashboard__card-title">Departamentos</h5>
@@ -83,6 +89,10 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <p class="footer__text">Copyright © 2023-2025 Sistema de recursos humanos</p>
+  </footer>
   <script src="/SCRIPT/SCRIPT_DASH.JS"></script>
 </body>
+
 </html>
