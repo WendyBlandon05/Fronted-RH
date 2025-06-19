@@ -1,0 +1,68 @@
+body {
+  background-color: #7a8aa2;
+}
+
+.dashboard__title {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.dashboard__card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.dashboard__card-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard__chart-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.dashboard__container {
+  max-width: 1200px;
+  background-color: red;
+}
+
+.dashboard__card-item {
+  transition: transform 0.2s;
+}
+
+.dashboard__card-item:hover {
+  transform: scale(1.02);
+}
+/*iconitos*/
+.dashboard__value-icon {
+  margin-top: 10px;
+}
+
+.dashboard__card-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0; /* elimina margen para que quede alineado bien */
+}
+
+.dashboard__card-icon {
+  font-size: 2.5rem;
+  color:hsl(219, 100%, 20%);
+  opacity: 1;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.dashboard__card-item:hover .dashboard__card-icon {
+  color: #1367e5;
+  opacity: 1;
+}
