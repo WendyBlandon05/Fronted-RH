@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
- const generoChart = new Chart(document.getElementById("generoChart"), {
+  const generoChart = new Chart(document.getElementById("generoChart"), {
     type: 'pie',
     data: {
       labels: [],
       datasets: [{
         data: [],
-        backgroundColor: ['#36A2EB', '#FF6384' ]
+        backgroundColor: ['#36A2EB', '#FF6384']
       }]
     },
     options: {
@@ -29,24 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const contratoChart = new Chart(document.getElementById("contratoChart"), {
-    type: 'bar',
+    type: 'doughnut',
     data: {
       labels: [],
       datasets: [{
         label: 'Cantidad',
         data: [],
-        backgroundColor: '#4BC0C0'
+        backgroundColor: []
       }]
     },
     options: {
       responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+      plugins: {
+        legend: { position: 'right' },
+        tooltip: { enabled: true }
       }
     }
   });
+
 
   const jornadaChart = new Chart(document.getElementById("jornadaChart"), {
     type: 'bar',
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarGraficoJornada(jornadaChart);
   mostrarGraficoDepartamento(departamentoChart);
   mostrarNominaMes();
-
+  cargarDatosContratoChart(contratoChart)
 
 
 });
@@ -302,3 +302,31 @@ async function mostrarNominaMes() {
   }
 }
 
+//tipos de contrato
+async function cargarDatosContratoChart(contratoChart) {
+  try {
+    const accessToken = localStorage.getItem('access_token');
+    const response = await fetch('http://127.0.0.1:8000/adminrh/contratos/resumen-tipos-contrato/', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+    const result = await response.json();
+
+    if (response.ok && result.Success && Array.isArray(result.Record)) {
+      const labels = result.Record.map(item => item.nombre_tipo);
+      const data = result.Record.map(item => item.cantidad);
+      const colores = data.map(() => generarColorAleatorio());
+
+      contratoChart.data.labels = labels;
+      contratoChart.data.datasets[0].data = data;
+      contratoChart.data.datasets[0].backgroundColor = colores;
+      contratoChart.update();
+    } else {
+      console.error('Error al obtener datos para el gráfico:', result.Message);
+    }
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  }
+}

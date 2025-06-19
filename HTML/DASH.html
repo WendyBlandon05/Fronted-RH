@@ -18,10 +18,10 @@
 
     <nav class="sidebar">
         <ul class="sidebar__menu">
-            <li class="sidebar__item"><a href="./Pag_empresa/Departamentos.html" class="sidebar__link"><i class="bx bx-building"></i>Departamentos</a></li>
-            <li class="sidebar__item"><a href="./Pag_empresa/Cargos.html" class="sidebar__link"><i class="bx bx-briefcase"></i>Cargos</a></li>
-            <li class="sidebar__item"><a href="./Pag_empresa/Beneficios.html" class="sidebar__link"><i class="bx bx-wallet"></i>Beneficios</a></li>
-            <li class="sidebar__item"><a href="./Pag_empresa/Jornadas.html" class="sidebar__link"><i class="bx bx-time"></i>Jornadas</a></li>
+            <li class="sidebar__item"><a href="#inicio" class="sidebar__link"><i class="bx bx-home"></i>Inicio</a></li>
+            <li class="sidebar__item"><a href="#genero"  class="sidebar__link"><i class="bx bx-female"></i>Género</a></li>
+            <li class="sidebar__item"><a href="#jornadas" class="sidebar__link"><i class="bx bx-wallet"></i>Jornada</a></li>
+            <li class="sidebar__item"><a href="#departamentos" class="sidebar__link"><i class="bx bx-time"></i>Departamentos</a></li>
         </ul>
         <div class="sidebar__actions">
             <a href="/HTML/login.html" class="sidebar__button">
@@ -35,7 +35,7 @@
         </div>
     </nav>
     <!-- Fin menu l-->
-     
+
   <header class="header">
     <h1 class="header__title">Panel de Control -AdminRH</h1>
     <img class="header__logo" src="/imagenes/images-Photoroom.png" lt="logo empresa">
@@ -44,7 +44,7 @@
    
 
     <!-- Paneles-->
-    <div class="dashboard__summary row g-4 mb-4">
+    <div class="dashboard__summary row g-4 mb-4" id="inicio">
       <div class="dashboard__card col-md-3">
         <div class="card dashboard__card-item shadow-sm">
           <div class="card-body">
@@ -85,8 +85,8 @@
     </div>
 
     <!-- Gráficas -->
-    <div class="dashboard__charts row g-4">
-      <div class="dashboard__chart col-md-6">
+    <div class="dashboard__charts row g-4" >
+      <div class="dashboard__chart col-md-6" id="genero">
         <div class="chart-container">
           <h5 class="dashboard__chart-title">Distribución por Género</h5>
           <canvas id="generoChart"></canvas>
@@ -98,13 +98,13 @@
           <canvas id="contratoChart"></canvas>
         </div>
       </div>
-      <div class="dashboard__chart col-md-12">
+      <div class="dashboard__chart col-md-12" id="jornadas">
         <div class="chart-container mt-4">
           <h5 class="dashboard__chart-title">Tipos de Jornada</h5>
           <canvas id="jornadaChart"></canvas>
         </div>
       </div>
-      <div class="dashboard__chart col-md-12">
+      <div class="dashboard__chart col-md-12" id="departamentos">
         <div class="chart-container mt-4">
           <h5 class="dashboard__chart-title">Departamentos con Más Personal</h5>
           <canvas id="departamentoChart"></canvas>
