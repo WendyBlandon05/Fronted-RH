@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //llamar funciones al iniciar lapagina
+  //llamar funciones al
   mostrarGraficoGenero(generoChart);
   mostrarCantidadEmpleados();
   mostrarCantidadContratos();
